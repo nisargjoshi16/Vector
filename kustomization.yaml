@@ -1,0 +1,20 @@
+namespace: vector
+
+bases:
+  - github.com/timberio/vector/distribution/kubernetes/vector-agent?ref=master
+
+images:
+  - name: timberio/vector
+    newName: timberio/vector
+    newTag: nightly-debian
+
+resources:
+  - namespace.yaml
+
+configMapGenerator:
+  - name: vector-agent-config
+    files:
+      - configs/vector-agent.toml
+
+generatorOptions:
+  disableNameSuffixHash: true
